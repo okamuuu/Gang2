@@ -13,8 +13,24 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/article', {
-        templateUrl: 'views/article.html',
+      .when('/articles', {
+        templateUrl: 'views/article/list.html',
+        controller: 'ArticleCtrl'
+      })
+      .when('/articles', {
+        templateUrl: 'views/article/list.html',
+        controller: 'ArticleCtrl'
+      })
+      .when('/articles/create', {
+        templateUrl: 'views/article/create.html',
+        controller: 'ArticleCtrl'
+      })
+      .when('/articles/:id', {
+        templateUrl: 'views/article/view.html',
+        controller: 'ArticleCtrl'
+      })
+      .when('/articles/:id/edit', {
+        templateUrl: 'views/article/edit.html',
         controller: 'ArticleCtrl'
       })
       .otherwise({
