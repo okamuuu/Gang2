@@ -6,7 +6,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'ngMockE2E'
+    'ngMockE2E',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -49,5 +50,7 @@ angular
         }];
         
         $httpBackend.whenGET('/articles').respond(articles);
+       
+        $httpBackend.whenGET('/unknown').respond(500, ['error']);
     })
 ;
