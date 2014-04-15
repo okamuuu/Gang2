@@ -20,7 +20,7 @@ server.get('/articles', function(req, res, next) {
     articleSave.find({}, function(error, articles) {
 
         if (error) {
-            return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)));
+            return next(new restify.InternalError(JSON.stringify(error.errors)));
         }
 
         res.send(articles);
@@ -34,7 +34,7 @@ server.get('/articles/:id', function(req, res, next) {
     }, function(error, articles) {
 
         if (error) {
-            return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)));
+            return next(new restify.InternalError(JSON.stringify(error.errors)));
         }
 
         res.send(articles);
@@ -55,7 +55,7 @@ server.post('/articles', function(req, res, next) {
     }, function(error, article) {
 
         if (error) {
-            return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)));
+            return next(new restify.InternalError(JSON.stringify(error.errors)));
         }
 
         res.send(201, article)
@@ -79,7 +79,7 @@ server.put('/articles/:id', function(req, res, next) {
     }, function(error, article) {
 
         if (error) {
-            return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)));
+            return next(new restify.InternalError(JSON.stringify(error.errors)));
         }
 
         res.send(201, article)
@@ -95,7 +95,7 @@ server.del('/articles/:id', function(req, res, next) {
     articleSave.delete(req.params.id, function(error, article) {
     
         if (error) {
-            return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)));
+            return next(new restify.InternalError(JSON.stringify(error.errors)));
         }
         
         res.send()
