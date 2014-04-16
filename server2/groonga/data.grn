@@ -1,0 +1,92 @@
+load --table Keyword
+[
+  {
+    "_key": "perl",
+    "name": "Perl",
+    "display_fg": true,
+  },
+  {
+    "_key": "html5",
+    "name": "HTML5",
+    "display_fg": false,
+  },
+  {
+    "_key": "javascript",
+    "name": "javascript",
+    "display_fg": true,
+  },
+  {
+    "_key": "php",
+    "name": "PHP",
+    "display_fg": true,
+  },
+  {
+    "_key": "ruby",
+    "name": "Ruby",
+    "display_fg": true,
+  },
+  {
+    "_key": "python",
+    "name": "Python",
+    "display_fg": true,
+  },
+  {
+    "_key": "haskell",
+    "name": "Haskell",
+    "display_fg": true,
+  },
+  {
+    "_key": "nodejs",
+    "name": "Node.js",
+    "display_fg": true,
+  },
+  {
+    "_key": "mysql",
+    "name": "MySQL",
+    "display_fg": true,
+  },
+  {
+    "_key": "postgresql",
+    "name": "PostgreSQL",
+    "display_fg": true,
+  },
+  {
+    "_key": "oracle",
+    "name": "Oracle",
+    "display_fg": true,
+  },
+  {
+    "_key": "mssql",
+    "name": "MSSQL",
+    "display_fg": true,
+  }
+]
+load --table Article
+[
+   {
+    "_key": "key1",
+    "title": "title1",
+    "keywords": ["perl","php"],
+    "content": "content1",
+    "display_fg": true,
+  },
+  {
+    "_key": "key2",
+    "title": "title2",
+    "keywords": ["perl","php", "javascript"],
+    "content": "content2",
+    "display_fg": true,
+  },
+  {
+    "_key": "key3",
+    "title": "タイトル",
+    "keywords": ["perl","php", "javascript"],
+    "content": "コンテント",
+    "display_fg": true,
+  }
+]
+
+load --table Article
+[{"keywords":["html5","javascript","php"],"_key":"test","content":"テストです。","display_fg":"0","title":"hoeg4"}]
+
+
