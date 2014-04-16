@@ -1,12 +1,15 @@
 'use strict';
 
 var request = require('request');
+  
 
 module.exports = function (grunt) {
   // show elapsed time at the end
   require('time-grunt')(grunt);
   // load all grunt tasks
   require('load-grunt-tasks')(grunt);
+  
+//  grunt.loadNpmTasks('grunt-mocha-test');
 
   var reloadPort = 35729, files;
 
@@ -15,6 +18,15 @@ module.exports = function (grunt) {
     develop: {
       server: {
         file: 'server.js'
+      }
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          clearRequireCache: true
+        },
+        src: ['test/**/*.js']
       }
     },
     watch: {
@@ -28,7 +40,11 @@ module.exports = function (grunt) {
           'package.json'
         ],
         tasks: ['develop', 'delayed-livereload']
-      }
+      },
+      test: {
+        files: ['test/**/*.js'],
+        tasks: ['mochaTest']
+      },
     }
   });
 
@@ -51,5 +67,5 @@ module.exports = function (grunt) {
     }, 500);
   });
 
-  grunt.registerTask('default', ['develop', 'watch']);
+  grunt.registerTask('default', ['mochaTest', 'develop', 'watch']);
 };
