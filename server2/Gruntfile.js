@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         tasks: ['develop', 'delayed-livereload']
       },
       test: {
-        files: ['test/**/*.js'],
+        files: ['test/**/*.js', 'lib/**/*.js'],
         tasks: ['mochaTest']
       },
     }

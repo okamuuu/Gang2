@@ -4,20 +4,11 @@ var restify = require('restify'),
 var server = restify.createServer(),
     articleSave = require('save')('articlj');
 
-//restify.CORS.ALLOW_HEADERS.push('accept');
-//restify.CORS.ALLOW_HEADERS.push('sid');
-//restify.CORS.ALLOW_HEADERS.push('lang');
-//restify.CORS.ALLOW_HEADERS.push('origin');
-//restify.CORS.ALLOW_HEADERS.push('withcredentials');
-//restify.CORS.ALLOW_HEADERS.push('x-requested-with');
-
 server
     .use(restify.fullResponse())
     .use(restify.bodyParser())
     .use(restify.CORS({'origins': ['http://localhost']}));
-//    .use(restify.CORS());
 
-// search
 server.get('/articles', function(req, res, next) {
     articleSave.find({}, function(error, articles) {
 
