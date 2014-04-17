@@ -11,9 +11,38 @@ Repository.prototype.getRequest = function(command) {
     return request.get('http://' + this.host + ':' + this.port + '/d/' + command);
 };
 
-Repository.prototype.get = function(command, params, callback) {
+Repository.prototype.select = function(callback) {
 
-    this.getRequest(command).query({table: 'Article'}).end(function(err, response) {
+    this.getRequest('select').query({
+        table: 'Article'
+    }).end(function(err, response) {
+
+        if (err) {
+            return callback(err);
+        }
+        return callback(null, response);
+    });
+};
+
+Repository.prototype.load = function(params, callback) {
+
+    this.getRequest('load').query({
+        table: 'Article',
+        values: JSON.stringify(params)
+    }).end(function(err, response) {
+
+        if (err) {
+            return callback(err);
+        }
+        return callback(null, response);
+    });
+};
+
+Repository.prototype.delete = function(params, callback) {
+
+    this.getRequest('delete').query({
+        table: 'Article',
+    }).query(params).end(function(err, response) {
 
         if (err) {
             return callback(err);
