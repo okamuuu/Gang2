@@ -1,5 +1,5 @@
 var http = require('http');
-var request = require('request');
+var request = require('superagent');
 
 function Repository(name) {
     this.host = 'localhost';
@@ -7,14 +7,14 @@ function Repository(name) {
     this.name = 'hoge';
 };
 
-Repository.prototype.getUrl = function(command) {
-    return 'http://' + this.host + ':' + this.port + '/d/' + command;
+Repository.prototype.getRequest = function(command) {
+    return request.get('http://' + this.host + ':' + this.port + '/d/' + command);
 };
 
-Repository.prototype.get = function(command, table, callback) {
+Repository.prototype.get = function(command, params, callback) {
 
-    request( this.getUrl(command) + '?table=' + table, function(err, response, body) {
-        
+    this.getRequest(command).query({table: 'Article'}).end(function(err, response) {
+
         if (err) {
             return callback(err);
         }

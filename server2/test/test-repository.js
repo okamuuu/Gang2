@@ -9,13 +9,15 @@ describe('repotisoty', function () {
     it('can request to groonga server', function () {
         
         repository.get('select', 'Article', function(err, response) {
-
-            console.log(response.statusCode);
-            console.log(response.headers);
-            console.log(response.body);
+            console.log(response);
+            assert(response.statusCode == 200);
         });
 
-        assert(true);
+        repository.get('select', 'Article', function(err, response) {
+            assert(response.statusCode == 200);
+        });
+
+
     });
 
 });
