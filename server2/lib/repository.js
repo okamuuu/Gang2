@@ -11,31 +11,53 @@ Repository.prototype.getRequest = function(command) {
     return request.get('http://' + this.host + ':' + this.port + '/d/' + command);
 };
 
-Repository.prototype.select = function(callback) {
+Repository.prototype.find = Repository.prototype.select = function(params, callback) {
 
     this.getRequest('select').query({
         table: 'Article'
-    }).end(function(err, response) {
+    }).query(params).end(function(err, response) {
 
         if (err) {
             return callback(err);
         }
-        return callback(null, response);
+
+//        var count = response.body[1][0].shift()[0];
+//        var keys = response.body[1][0].shift();
+//        var keysLength = keys.length;
+//        var valuesList = response.body[1][0];
+//
+//        var articles = [];
+//        for (var i = 0; i < count; i++) {
+//            var article = {};
+//            for (var j = 0; j < keysLength; j++) {
+//                article[keys[j][0]] = valuesList[i][j];     
+//            }
+//            articles.push(article);
+//        }
+
+        return callback(null, response.body);
     });
 };
 
-Repository.prototype.load = function(params, callback) {
+Repository.prototype.create =
+    Repository.prototype.save =
+    Repository.prototype.load = function(params, callback) {
 
-    this.getRequest('load').query({
-        table: 'Article',
-        values: JSON.stringify(params)
-    }).end(function(err, response) {
+        this.getRequest('load').query({
+            table: 'Article',
+            values: JSON.stringify(params)
+        }).end(function(err, response) {
 
-        if (err) {
-            return callback(err);
-        }
-        return callback(null, response);
-    });
+            if (err) {
+                return callback(err);
+            }
+
+            if (response.statusCode !== 200) {
+                return callback('status code is invalid: ' + response.statusCode);
+            }
+
+            return callback(null, response);
+        });
 };
 
 Repository.prototype.delete = function(params, callback) {

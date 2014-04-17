@@ -11,11 +11,11 @@ angular.module('clientApp')
             }).query();
         },
 
-        queryArticles: function() {
+        queryArticles: function(successCallback) {
    
-            return $resource('/articles', {}, {
+            $resource('http://localhost:8080/articles', {}, {
                 'query': {method: 'GET', isArray: true}
-            }).query();
+            }).query(successCallback);
         }
     
     };

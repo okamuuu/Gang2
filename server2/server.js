@@ -2,7 +2,8 @@ var restify = require('restify'),
     http = require('http');
 
 var server = restify.createServer(),
-    articleSave = require('save')('articlj');
+//    repository = require('save')('articlj');
+    repository = require('./lib/repository');
 
 server
     .use(restify.fullResponse())
@@ -10,19 +11,20 @@ server
     .use(restify.CORS({'origins': ['http://localhost']}));
 
 server.get('/articles', function(req, res, next) {
-    articleSave.find({}, function(error, articles) {
+    
+    repository.find({}, function(error, response) {
 
         if (error) {
             return next(new restify.InternalError(JSON.stringify(error.errors)));
         }
 
-        res.send(articles);
+        res.send(response.body);
     })
 });
 
 // show
 server.get('/articles/:id', function(req, res, next) {
-    articleSave.find({
+    repository.find({
         _id: req.params.id
     }, function(error, articles) {
 
@@ -42,16 +44,16 @@ server.post('/articles', function(req, res, next) {
         return next(new restify.InvalidArgumentError('Content must be supplied'))
     }
 
-    articleSave.create({
+    repository.create({
         title: req.params.title,
         content: req.params.content
-    }, function(error, article) {
+    }, function(error, response) {
 
         if (error) {
             return next(new restify.InternalError(JSON.stringify(error.errors)));
         }
 
-        res.send(201, article)
+        res.send(201, response.body)
     })
 });
 
@@ -65,17 +67,17 @@ server.put('/articles/:id', function(req, res, next) {
         return next(new restify.InvalidArgumentError('Content must be supplied'))
     }
 
-    articleSave.update({
+    repository.update({
         _id: req.params.id,
         title: req.params.title,
         content: req.params.content
-    }, function(error, article) {
+    }, function(error, resonse) {
 
         if (error) {
             return next(new restify.InternalError(JSON.stringify(error.errors)));
         }
 
-        res.send(201, article)
+        res.send(201, response.body)
     })
 });
 
@@ -85,7 +87,7 @@ server.del('/articles/:id', function(req, res, next) {
         return next(new restify.InvalidArgumentError('Id must be supplied'))
     }
         
-    articleSave.delete(req.params.id, function(error, article) {
+    repository.delete(req.params.id, function(error, response) {
     
         if (error) {
             return next(new restify.InternalError(JSON.stringify(error.errors)));

@@ -8,7 +8,7 @@ describe('repotisoty', function() {
 
     it('can request to select', function() {
 
-        repository.select(function(err, response) {
+        repository.select({}, function(err, response) {
             assert(response.statusCode == 200);
         });
     });
@@ -19,7 +19,7 @@ describe('repotisoty', function() {
             "_key": "new_record",
             "content": "this is new record.",
             "display_fg": "0",
-            "title": "new record",
+            "title": "new record"
         }], function(err, response) {
             assert(response.statusCode == 200);
         });
@@ -29,10 +29,8 @@ describe('repotisoty', function() {
         repository.delete({
             "key": "new_record",
         }, function(err, response) {
-            console.log(response);
             assert(response.statusCode == 200);
         });
     });
-
 
 });

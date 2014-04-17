@@ -6,7 +6,7 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'ngMockE2E',
+//    'ngMockE2E',
     'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
@@ -31,26 +31,26 @@ angular
         redirectTo: '/articles'
       });
   })
- .run(function($httpBackend) {
-        // No need to deal with tempaltes
-        $httpBackend.whenGET(/^views\//).passThrough();
-            
-        var articles = [{
-            id: 1,
-            title: 'title1',
-            content: 'content1'
-        }, {
-            id: 2,
-            title: 'title2',
-            content: 'content2'
-        }, {
-            id: 3,
-            title: 'title3',
-            content: 'content3'
-        }];
-        
-        $httpBackend.whenGET('/articles').respond(articles);
-       
-        $httpBackend.whenGET('/unknown').respond(500, ['error']);
-    })
-;
+// .run(function($httpBackend) {
+//        // No need to deal with tempaltes
+//        $httpBackend.whenGET(/^views\//).passThrough();
+//            
+//        var articles = [{
+//            id: 1,
+//            title: 'title1',
+//            content: 'content1'
+//        }, {
+//            id: 2,
+//            title: 'title2',
+//            content: 'content2'
+//        }, {
+//            id: 3,
+//            title: 'title3',
+//            content: 'content3'
+//        }];
+//        
+////        $httpBackend.whenGET('/articles').respond(articles);
+//       
+//        $httpBackend.whenGET('/unknown').respond(500, ['error']);
+//    })
+//;
