@@ -1,8 +1,12 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require 'rake-chef-syntax'
+require 'rake-foodcritic'
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = 'spec/*/*_spec.rb'
 end
 
 task :default => :spec
+
+

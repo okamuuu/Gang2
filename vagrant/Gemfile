@@ -5,3 +5,5 @@ source "https://rubygems.org"
 gem "serverspec"
 gem "rake"
 gem "foodcritic"
+gem 'rake-chef-syntax'
+gem 'rake-foodcritic'
