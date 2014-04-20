@@ -1,6 +1,6 @@
 name             'groonga'
-maintainer       'YOUR_COMPANY_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'okamuuu'
+maintainer_email 'gmail'
 license          'All rights reserved'
 description      'Installs/Configures groonga'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
