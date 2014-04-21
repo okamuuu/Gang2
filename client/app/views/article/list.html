@@ -3,7 +3,7 @@
         <h1>Articles</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="article in articles" data-ng-href="#/articles/{{article._id}}" class="list-group-item">
+        <a data-ng-repeat="article in articles" data-ng-href="#/articles/{{article._id}}/detail" class="list-group-item">
             <small class="list-group-item-text">{{article.published_at | date:'medium'}}</small>
             <h4 class="list-group-item-heading">{{article.title}}</h4>
             <p class="list-group-item-text">{{article.content}}</p>

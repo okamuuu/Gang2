@@ -17,10 +17,7 @@ angular.module('clientApp')
     ])
     .controller('dialogCtrl', function($scope) {
 
-        $scope.alerts = [{
-            type: 'danger',
-            msg: 'hoge'    
-        }];
+        $scope.alerts = [];
 
         $scope.$on('showDialog', function(event, message) {
 

@@ -19,7 +19,7 @@ angular
         templateUrl: 'views/article/create.html',
         controller: 'ArticleCtrl'
       })
-      .when('/articles/:id', {
+      .when('/articles/:id/detail', {
         templateUrl: 'views/article/view.html',
         controller: 'ArticleCtrl'
       })
