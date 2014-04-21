@@ -8,9 +8,15 @@
 #
 bash "install groonga" do
     code <<-EOC
-sudo rpm -ivh htt:p//packages.groonga.org/centos/groonga-release-1.1.0-1.noarch.rpm
+sudo rpm -ivh http://packages.groonga.org/centos/groonga-release-1.1.0-1.noarch.rpm
 sudo yum makecache
-sudo yum install -y groonga
     EOC
+    not_if do File.exists?("/etc/yum.repos.d/groonga.repo")
+    end
+        
+end
+
+package 'groonga' do
+    action :install
 end
 

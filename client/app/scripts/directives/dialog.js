@@ -1,14 +1,13 @@
+/*
 'use strict';
 
 angular.module('clientApp')
-
     .config(['$httpProvider',
         function($httpProvider) {
             $httpProvider.interceptors.push(function($q, $log, $rootScope) {
                         
                 return {
                     responseError: function(reason) {
-                                       console.log(reason);
                         $rootScope.$broadcast('showDialog', 'message');
                         return $q.reject(reason);
                     }
@@ -43,3 +42,4 @@ angular.module('clientApp')
             restrict: 'A'
         };
     });
+*/
