@@ -9,6 +9,7 @@ describe('repotisoty', function() {
     it('can request to select', function() {
 
         repository.select({}, function(err, response) {
+            console.log(err, response);
             assert(response.statusCode == 200);
         });
     });

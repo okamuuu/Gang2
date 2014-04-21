@@ -35,7 +35,7 @@ Repository.prototype.find = Repository.prototype.select = function(params, callb
 //            articles.push(article);
 //        }
 
-        return callback(null, response.body);
+        return callback(null, response);
     });
 };
 
