@@ -23,7 +23,6 @@ angular.module('clientApp')
             $scope.articles = articles;
         });
 
-
         $scope.getDummyError = function() {
             repository.getDummyError();
         };
@@ -50,7 +49,15 @@ angular.module('clientApp')
                 }
 
                 $scope.article = articles[0];
-            })
+            });
+
+            $scope.remove = function() {
+                console.log('remove');
+                console.log($routeParams.id);
+                repository.deleteArticle($routeParams.id, function(result) {
+                    $location.path('/#/articles');
+                }); 
+            };
         })
     .controller('ArticleEditCtrl',
         function($scope, $route, $routeParams, $location, repository) {
@@ -83,7 +90,7 @@ angular.module('clientApp')
                     title: $scope.article.title,
                     content: $scope.article.content
                 }, function(result) {
-
+                    $location.path('/#/articles/' + $routeParams.id);
                 });
             };
         })

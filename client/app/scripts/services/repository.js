@@ -61,8 +61,15 @@ angular.module('clientApp')
                 }).query(successCallback);
             },
 
+            deleteArticle: function(id, successCallback) {
 
-
+                $resource('http://localhost:8080/articles/' + id, {
+                    'delete': {
+                        method: 'DELETE',
+                        isArray: true
+                    }
+                }).delete(successCallback);
+            },
 
         };
 

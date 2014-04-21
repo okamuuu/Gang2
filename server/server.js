@@ -70,6 +70,8 @@ server.post('/articles', function(req, res, next) {
 });
 
 server.put('/articles/:id', function(req, res, next) {
+    
+    console.log('PUT /articles/:id');
 
     if (req.params.id === undefined) {
         return next(new restify.InvalidArgumentError('Id must be supplied'))
@@ -99,12 +101,16 @@ server.put('/articles/:id', function(req, res, next) {
 });
 
 server.del('/articles/:id', function(req, res, next) {
+    
+    console.log('DELETE /articles/:id');
 
     if (req.params.id === undefined) {
         return next(new restify.InvalidArgumentError('Id must be supplied'))
     }
 
-    repository.delete(req.params.id, function(error, response) {
+    repository.delete({id:req.params.id}, function(error, response) {
+
+        console.log(response);
 
         if (error) {
             return next(new restify.InternalError(JSON.stringify(error.errors)));
