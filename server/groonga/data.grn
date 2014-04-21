@@ -87,6 +87,6 @@ load --table Article
 ]
 
 load --table Article
-[{"keywords":["html5","javascript","php"],"_key":"test","content":"テストです。","display_fg":"0","title":"hoeg4"}]
+[{"keywords":["html5","javascript","php"],"_key":"key4","content":"テストです。","display_fg":"0","title":"hoeg4"}]
 
 

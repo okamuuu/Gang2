@@ -2,6 +2,9 @@
     <div class="page-header">
         <h1>Articles</h1>
     </div>
+    <div class="text-right" style="margin-bottom:15px;">
+        <a data-ng-href="#/articles/create"><button type="button" class="btn btn-primary">Create</button></a>
+    </div>
     <div class="list-group">
         <a data-ng-repeat="article in articles" data-ng-href="#/articles/{{article._id}}/detail" class="list-group-item">
             <small class="list-group-item-text">{{article.published_at | date:'medium'}}</small>

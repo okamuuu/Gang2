@@ -9,9 +9,16 @@ describe('repotisoty', function() {
     it('can request to select', function() {
 
         repository.select({}, function(err, response) {
-            console.log(err, response);
+            assert(response.body[1][0][0][0] > 1);
             assert(response.statusCode == 200);
         });
+
+        repository.select({query:"_id:2"}, function(err, response) {
+            assert(response.body[1][0][0][0] === 1);
+            assert(response.statusCode === 200);
+        });
+
+
     });
 
     it('can request to load', function() {
@@ -22,7 +29,8 @@ describe('repotisoty', function() {
             "display_fg": "0",
             "title": "new record"
         }], function(err, response) {
-            assert(response.statusCode == 200);
+            assert(response.body[1] === 1);
+            assert(response.statusCode === 200);
         });
     });
 

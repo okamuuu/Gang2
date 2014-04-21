@@ -8,6 +8,7 @@ angular.module('clientApp')
                         
                 return {
                     responseError: function(reason) {
+                                       console.log(reason);
                         $rootScope.$broadcast('showDialog', 'message');
                         return $q.reject(reason);
                     }

@@ -12,9 +12,9 @@ Repository.prototype.getRequest = function(command) {
 };
 
 Repository.prototype.find = Repository.prototype.select = function(params, callback) {
-
+        
     this.getRequest('select').query({
-        table: 'Article'
+        table: 'Article',
     }).query(params).end(function(err, response) {
 
         if (err) {
@@ -42,6 +42,8 @@ Repository.prototype.find = Repository.prototype.select = function(params, callb
 Repository.prototype.create =
     Repository.prototype.save =
     Repository.prototype.load = function(params, callback) {
+
+        console.log(JSON.stringify(params));
 
         this.getRequest('load').query({
             table: 'Article',
