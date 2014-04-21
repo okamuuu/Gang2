@@ -12,3 +12,8 @@ scripts/rebuild.sh
 
 cd server 
 grunt
+
+## vagrant 
+
+cd vagrant
+bundle install

@@ -7,7 +7,5 @@
 # All rights reserved - Do Not Redistribute
 #
 service "iptables" do
-  supports :status => true, :restart => true, :reload => true
-  action [:disable, :start]
+    action [:stop, :disable]
 end
-
